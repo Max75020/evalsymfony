@@ -9,7 +9,7 @@
 		<div class="row">
 			{% for product in products %}
 				<div class="col-md-4 mb-4">
-					<div class="card">
+					<div class="card h-100">
 						<img src="{{ product.picture }}" alt="{{ product.title }}" class="card-img-top img-fluid" style="height: 400px;">
 						<div class="card-body">
 							<h2 class="card-title">{{ product.title }}</h2>
@@ -19,7 +19,7 @@
 									...
 								{% endif %}
 							</p>
-							{# <a href="cart.php?action=add&id=<?php echo $product_id; ?>" class="btn btn-success btn-lg">Ajouter au Panier</a> #}
+							<a href="{{ path('view_product', {id_product: product.id}) }}" class="btn btn-info">Voir</a>
 						</div>
 					</div>
 				</div>

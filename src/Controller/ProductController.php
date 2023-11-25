@@ -28,4 +28,18 @@ class ProductController extends AbstractController
 			'type_notif' => $type_notif
         ]);
     }
+	#[Route('/view-product/{id_product}', name: 'view_product')]
+	public function viewproduct($id_product, ManagerRegistry $doctrine): Response
+	{
+		$em = $doctrine->getManager();
+
+		$product = $em->getRepository(Product::class)->find($id_product);
+		if ($product === null) {
+			return $this->redirectToRoute('list_products');
+		}
+
+		return $this->render('product/viewProduct.html.twig', [
+			'product' => $product,
+		]);
+	}
 }
